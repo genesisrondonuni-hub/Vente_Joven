@@ -204,32 +204,20 @@ export default function Form() {
     setSubmissionError(null);
     
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // Usamos mode: 'no-cors' para evitar restricciones de CORS del lado del cliente.
+      // Google Apps Script redirecciona la petición a googleusercontent.com, lo que rompe las políticas CORS de los navegadores.
+      // En modo 'no-cors', la petición se procesa en el servidor de Google pero la respuesta obtenida en el navegador es opaca.
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify(formData)
       });
       
-      if (!response.ok) {
-        let errorMessage = `Error en el servidor (código: ${response.status}).`;
-        try {
-          const errorResult = await response.json();
-          errorMessage = errorResult.error || errorMessage;
-        } catch {
-          // Ignorar error de parsing
-        }
-        throw new Error(errorMessage);
-      }
-
-      const result = await response.json();
-
-      if (result.result === 'success') {
-        setIsSubmitted(true);
-      } else {
-        throw new Error(result.error || 'Ocurrió un error en el procesamiento de los datos.');
-      }
+      // Si la promesa de red se resuelve con éxito, asumimos que el registro fue recibido
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Error al enviar los datos:', error);
       setSubmissionError(
