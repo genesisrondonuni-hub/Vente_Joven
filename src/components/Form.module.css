@@ -1,0 +1,361 @@
+.formContainer {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-premium);
+  padding: 3rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Decoraciones internas de la tarjeta */
+.formContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+/* Config Warning Banner */
+.configWarning {
+  background-color: rgba(211, 47, 47, 0.15);
+  border: 1px dashed var(--error-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  color: #ff8a80;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.configWarning h3 {
+  color: #ff5252;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Stepper / Barra de Progreso */
+.stepperContainer {
+  margin-bottom: 2.5rem;
+}
+
+.stepInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.stepTitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stepNumber {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 100px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Secciones del Formulario */
+.formStep {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.75rem;
+}
+
+.sectionTitle svg {
+  color: var(--primary-color);
+}
+
+.formGroup {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+/* Inputs y Selects premium */
+.formGroup input[type="text"],
+.formGroup input[type="date"],
+.formGroup input[type="tel"],
+.formGroup select {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.formGroup select option {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.formGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Radio & Checkbox */
+.radioGroup, .checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+.radioLabel, .checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+}
+
+.radioLabel:hover, .checkboxLabel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo al estar seleccionado */
+.radioLabel:has(input:checked) {
+  border-color: var(--primary-color);
+  background: rgba(0, 82, 255, 0.05);
+}
+
+.checkboxLabel:has(input:checked) {
+  border-color: var(--accent-color);
+  background: rgba(255, 111, 0, 0.05);
+}
+
+.radioLabel input[type="radio"],
+.checkboxLabel input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  accent-color: var(--accent-color);
+}
+
+/* Decálogo Box */
+.decálogoBox {
+  background-color: rgba(255, 111, 0, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.decálogoBox p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.decálogoBox strong {
+  color: var(--accent-color);
+}
+
+/* Botonera de Navegación */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.submitButton, .navButton {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.submitButton {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 14px 0 var(--primary-glow);
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 20px 0 var(--primary-glow);
+}
+
+.submitButton:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.navButtonSecondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.navButtonSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.submitButton:active, .navButton:active {
+  transform: scale(0.98);
+}
+
+/* Mensaje de éxito */
+.successMessage {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.successMessage h2 {
+  color: var(--success-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.successMessage p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.successTextBold {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Errores */
+.errorBox {
+  color: #ff8a80;
+  background-color: rgba(211, 47, 47, 0.15);
+  border: 1px solid var(--error-color);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Responsividad */
+@media (min-width: 768px) {
+  .radioGroup {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .formContainer {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-md);
+  }
+  
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  .formGroup input[type="text"],
+  .formGroup input[type="date"],
+  .formGroup input[type="tel"],
+  .formGroup select {
+    padding: 0.8rem 1rem;
+    font-size: 16px; /* Evita zoom automático en Safari iOS */
+  }
+
+  .buttonGroup {
+    flex-direction: column-reverse;
+  }
+  
+  .submitButton, .navButton {
+    width: 100%;
+  }
+}

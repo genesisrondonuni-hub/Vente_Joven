@@ -1,0 +1,139 @@
+:root {
+  /* Paleta de Colores HSL - Vente Premium */
+  --primary-color: hsl(220, 100%, 50%); /* Azul Vente Eléctrico */
+  --primary-hover: hsl(220, 100%, 42%);
+  --primary-glow: rgba(0, 82, 255, 0.15);
+  
+  --accent-color: hsl(28, 100%, 50%); /* Naranja Libertad / Fuego Juvenil */
+  --accent-hover: hsl(24, 100%, 45%);
+  --accent-glow: rgba(255, 111, 0, 0.2);
+
+  --success-color: hsl(142, 72%, 40%);
+  --error-color: hsl(354, 70%, 50%);
+  --warning-color: hsl(38, 92%, 50%);
+  
+  /* Fondos y Capas */
+  --bg-main: hsl(224, 71%, 4%); /* Azul Profundo casi Negro */
+  --bg-card: rgba(13, 20, 38, 0.7); /* Vidrio Semi-transparente Oscuro */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(0, 82, 255, 0.5);
+  
+  /* Textos */
+  --text-main: hsl(210, 40%, 98%);
+  --text-muted: hsl(215, 20%, 65%);
+  --text-inverse: hsl(224, 71%, 4%);
+
+  /* Efectos y Radios */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --glass-blur: 16px;
+  
+  /* Tipografías */
+  --font-title: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 82, 255, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 111, 0, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(0, 0, 0, 0.9) 0px, var(--bg-main) 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+}
+
+.app-container {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+  z-index: 10;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ffffff 40%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 500px;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
+}
+
+/* Decoración visual de fondo (glows) */
+.header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 40px;
+  background: var(--primary-color);
+  filter: blur(40px);
+  opacity: 0.25;
+  z-index: -1;
+  border-radius: 100px;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.85rem;
+  }
+  
+  .header p {
+    font-size: 0.95rem;
+  }
+}
